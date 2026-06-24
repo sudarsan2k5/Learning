@@ -187,3 +187,57 @@ Expected response:
   "success": true
 }
 ```
+
+
+---
+
+## 11. Verify OTP
+
+Use the OTP received on WhatsApp:
+
+```bash
+curl -X POST http://localhost:4000/auth/otp/verify \
+  -H "Content-Type: application/json" \
+  -d '{
+    "checkoutSessionId":"ffe1c7d0-4f72-48d9-b4d9-d240f16aad47",
+    "phone":"7205281825",
+    "otp":"PASTE_OTP_HERE"
+  }'
+```
+
+Expected response:
+
+```json
+{
+  "success": true
+}
+```
+
+---
+
+## 12. Check Checkout Details
+
+```bash
+curl "http://localhost:4000/checkout/details/ffe1c7d0-4f72-48d9-b4d9-d240f16aad47"
+```
+
+Verify that the checkout session state has changed from:
+
+```text
+OTP_SENT
+```
+
+to:
+
+```text
+OTP_VERIFIED
+```
+
+Expected example:
+
+```json
+{
+  "checkoutSessionId": "ffe1c7d0-4f72-48d9-b4d9-d240f16aad47",
+  "step": "OTP_VERIFIED"
+}
+```
