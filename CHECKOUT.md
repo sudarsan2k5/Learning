@@ -105,3 +105,10 @@ curl -s -X POST http://localhost:4000/api/v1/checkouts \
     ]
   }' | python3 -m json.tool
 ```
+
+
+Clear old dashboard key from browser console:
+
+```bash
+localStorage.removeItem("gofastrr_dashboard_api_key")
+```
