@@ -112,3 +112,20 @@ Clear old dashboard key from browser console:
 ```bash
 localStorage.removeItem("gofastrr_dashboard_api_key")
 ```
+
+
+2. Create Shopify checkout session
+
+Use /checkout/start, not merchant secret checkout API.
+
+
+```bash
+curl -X POST "http://localhost:4000/checkout/start" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "shop": "gofastrr-dev.myshopify.com",
+    "lineItems": [
+      { "variantId": 51283967967452, "quantity": 1 }
+    ]
+  }'
+```
